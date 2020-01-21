@@ -138,7 +138,7 @@ client.on('message', (msg) => {
           emo+=" :rage: "+arg[i];
 
       }
-      emo+=" :rage:"
+      emo+=" :rage:";
     msg.channel.send(emo);
   }
   if (/!jess/.test(msg.content) && contains(msg.content, "emote")) {
@@ -153,7 +153,7 @@ client.on('message', (msg) => {
           emo+=" "+arg[1]+" "+arg[i];
 
       }
-      emo+=" "+arg[1]
+      emo+=" "+arg[1];
     msg.channel.send(emo);
   }
 
@@ -173,11 +173,16 @@ client.on('message', (msg) => {
 
 client.on('ready', () => {
   console.log('Coucou moi c\'est Jessica');
-
   client.channels.find(x => x.name == 'ktrina76').send(salutations[getRandomInt(salutations.length-1)])
+  client.user.setPresence({
+    status: "online",
+    game: {
+      name: "Candy Crush Saga 10"
+    }
+  })
 } );
 config({
   path: __dirname + "/.env"
-})
+});
 console.log(process.env.TOKEN);
 client.login(process.env.TOKEN);
